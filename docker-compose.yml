@@ -12,5 +12,5 @@ services:
       - 16000:16000
       - 26000:26000
     volumes:
-      - /ISO_PATH:/iso
-      - ./data:/data
+      - /ISO_PATH:/iventoy/iso
+      - ./data:/iventoy/data

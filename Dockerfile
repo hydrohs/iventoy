@@ -5,8 +5,8 @@ WORKDIR /
 ADD https://github.com/ventoy/PXE/releases/download/v${VERSION}/iventoy-${VERSION}-linux-free.tar.gz /
 RUN tar -xvf *.tar.gz && \
     rm -rf iventoy-${VERSION}-linux.tar.gz && \
-    mv iventoy-${VERSION}/* /
-RUN chmod +x /iventoy.sh
+    mv iventoy-${VERSION}/* /iventoy
+RUN chmod +x /iventoy/iventoy.sh
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
