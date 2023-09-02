@@ -1,11 +1,11 @@
 # Download the latest iventoy version
 FROM alpine
-ARG IVENTOY
+ARG VERSION
 WORKDIR /
-ADD https://github.com/ventoy/PXE/releases/download/v${IVENTOY}/iventoy-${IVENTOY}-linux-free.tar.gz
+ADD https://github.com/ventoy/PXE/releases/download/v${VERSION}/iventoy-${VERSION}-linux-free.tar.gz
 RUN tar -xvf *.tar.gz && \
-    rm -rf iventoy-${IVENTOY}-linux.tar.gz && \
-    mv iventoy-${IVENTOY}/* /
+    rm -rf iventoy-${VERSION}-linux.tar.gz && \
+    mv iventoy-${VERSION}/* /
 RUN chmod +x /iventoy.sh
 
 COPY ./entrypoint.sh /entrypoint.sh

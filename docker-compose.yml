@@ -1,12 +1,13 @@
 version: '3.9'
 services:
   iventoy:
-    build: .
+    build:
+      context: .
+      args:
+        VERSION: 1.0.18
     container_name: iventoy
     restart: unless-stopped
     privileged: true #must be true
-    args:
-        IVENTOY: 1.0.18
     ports:
       - 16000:16000
       - 26000:26000
