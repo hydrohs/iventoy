@@ -1,19 +1,12 @@
 # Download the latest iventoy version
-FROM ziggyds/alpine-utils:latest AS init
+FROM alpine
 ARG IVENTOY
-WORKDIR /iventoy
-RUN echo ${IVENTOY} && \
-    wget https://github.com/ventoy/PXE/releases/download/v${IVENTOY}/iventoy-${IVENTOY}-linux-free.tar.gz && \
-    tar -xvf *.tar.gz && \
+WORKDIR /
+ADD https://github.com/ventoy/PXE/releases/download/v${IVENTOY}/iventoy-${IVENTOY}-linux-free.tar.gz
+RUN tar -xvf *.tar.gz && \
     rm -rf iventoy-${IVENTOY}-linux.tar.gz && \
-    mv iventoy-${IVENTOY} iventoy
-
-# Build image
-FROM ubuntu:22.04
-WORKDIR /app
-# Copy iventoy
-COPY --from=init /iventoy/iventoy /app
-RUN chmod +x /app/iventoy.sh
+    mv iventoy-${IVENTOY}/* /
+RUN chmod +x /iventoy.sh
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
